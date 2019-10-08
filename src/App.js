@@ -63,4 +63,11 @@ class App extends Component {
     this.setState({formTelephone:''})
   }
 
+  closeAddressHandler = (key,e) => {
+    let addresses = [...this.state.addresses];
+    let deleteIndex = addresses.findIndex((item)=>item.key===key);
+    addresses.splice(deleteIndex, 1);
+    this.setState({"addresses":addresses});
+  }
+
 export default App;
