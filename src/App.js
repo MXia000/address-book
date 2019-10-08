@@ -47,4 +47,20 @@ class App extends Component {
     "formTelephone": ''
   }
 
+  addAddressHandler = (event) => {
+    event.preventDefault();
+    let newAddress = {
+      key: generate(10),
+      firstname: this.state.formFirstname,
+      lastname: this.state.formLastname,
+      birthday: this.state.formBirthday,
+      telephone: this.state.formTelephone
+    };
+    this.setState({addresses:[...this.state.addresses,newAddress]});
+    this.setState({formFistname:''});
+    this.setState({formLastname:''});
+    this.setState({formBirthday:''});
+    this.setState({formTelephone:''})
+  }
+
 export default App;
