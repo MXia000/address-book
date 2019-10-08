@@ -6,25 +6,25 @@ import Button from 'react-bootstrap/Button';
 import ListTodos from './ListAddress/ListAddress.js';
 import {generate} from 'randomstring';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+class App extends Component {
+  state = {
+    "addresses": [
+      { "key": generate(10),
+        "firstname": 'Cathy',
+        "lastname" : 'Pierce',
+        "birthday": '9/14/1996',
+        "telephone": '200-910-8132'},
+      { "key": generate(10),
+      "firstname": 'Alfonso',
+      "lastname" : 'Cooley',
+      "birthday": '8/10/1973',
+      "telephone": '200-657-9362'},
+    ],
+    "collapse": false,
+    "formFirstname": '',
+    "formLastname": '',
+    "formBirthday": '',
+    "formTelephone": ''
+  }
 
 export default App;
