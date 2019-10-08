@@ -11,7 +11,7 @@ function ListAddress(props) {
                     className="text-right"
                     onClick={props.closer.bind(null,item.key)}>{'\u274e'}</span>
                     <Card.Body className="text-left">
-                        <h5 >{item.firstname} {item.lastname}</h5>
+                        <h3 >{item.firstname} {item.lastname}</h3>
                         <p>{item.birthday}</p>
                         <p>{item.telephone}</p>
                     </Card.Body>
