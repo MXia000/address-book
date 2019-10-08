@@ -70,4 +70,53 @@ class App extends Component {
     this.setState({"addresses":addresses});
   }
 
+  render = () => {
+    return (
+      <div className="App">
+        <Container>
+          <header className="App-header text-left">
+            <h1>React Based Address Book</h1>
+          </header>
+          <ListAddress 
+            addresses={this.state.addresses}
+            closer={this.closeAddressHandler}>
+          </ListAddress>
+          <h2 className='text-left'>Add An Address</h2>
+          <Form className="text-left" onSubmit={this.addAddressHandler}>
+            <Form.Group controlId="formAddress">
+              <Form.Label>Firstname</Form.Label>
+              <Form.Control 
+                type="text" 
+                placeholder="Enter Firstname" 
+                value={this.state.formFirstname}
+                onChange={(e) => this.setState({formFirstname: e.target.value})}/>
+              <Form.Label>Lastname</Form.Label>
+              <Form.Control 
+                type="text" 
+                placeholder="Enter Lastname" 
+                value={this.state.formLastname}
+                onChange={(e) => this.setState({formLastname: e.target.value})}/>
+              <Form.Label>Birthday</Form.Label>
+              <Form.Control 
+                type="text" 
+                placeholder="Enter Birthday" 
+                value={this.state.formBirthday}
+                onChange={(e) => this.setState({formBirthday: e.target.value})}/>
+              <Form.Label>Telephone</Form.Label>
+              <Form.Control as="textarea" 
+                rows="3" 
+                placeholder="Enter Telephone" 
+                value={this.state.formTelephone}
+                onChange={(e) => this.setState({formTelephone:e.target.value})}/>
+            </Form.Group>
+            <Button variant="primary" type="submit" >
+            Add Address
+            </Button>
+          </Form>
+        </Container>
+      </div>
+    );
+  }
+}
+
 export default App;
