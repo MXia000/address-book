@@ -1,6 +1,10 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import ListTodos from './ListAddress/ListAddress.js';
+import {generate} from 'randomstring';
 
 function App() {
   return (
