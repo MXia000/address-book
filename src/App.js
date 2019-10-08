@@ -5,9 +5,12 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ListAddress from './ListAddress/ListAddress.js';
 import {generate} from 'randomstring';
+import {Input} from 'mdbreact';
 
 class App extends Component {
   state = {
+    filter: "",
+
     "addresses": [
       { "key": generate(10),
         "firstname": 'Cathy',
@@ -67,18 +70,33 @@ class App extends Component {
     let addresses = [...this.state.addresses];
     let deleteIndex = addresses.findIndex((item)=>item.key===key);
     addresses.splice(deleteIndex, 1);
-    this.setState({"addresses":addresses});
+    this.setState({"addresses": addresses});
   }
 
+  handleChange = e => {
+    this.setState({filter : e.target.value });
+  };
+
   render = () => {
+    const { filter, addresses } = this.state;
+    const lowercasedFilter = filter.toLowerCase();
+    const filteredAddresses = addresses.filter(item => {
+      return Object.keys(item).some(key =>
+        item[key].toLowerCase().includes(lowercasedFilter)
+      );
+    });
+
     return (
       <div className="App">
         <Container>
           <header className="App-header text-left">
             <h1>React Based Address Book</h1>
+            <div>
+              <input value={filter} onChange={this.handleChange} placeholder="Search..." />
+            </div>
           </header>
           <ListAddress 
-            addresses={this.state.addresses}
+            addresses={filteredAddresses}
             closer={this.closeAddressHandler}>
           </ListAddress>
           <h2 className='text-left'>Add An Address</h2>
